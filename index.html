@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>Syraxen | Yazılım Ajansı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--tx:#f2f2f6;--mu:#8d8d9c;--ln:rgba(255,255,255,.1);--gl:rgba(255,255,255,.035);--v:#b020ff;--t:#26c9c0;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:300 16px/1.65 Sora,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{font-weight:300;margin:0;letter-spacing:-.02em;line-height:1.12}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--t);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.mono{font:400 11px DM Mono,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-top:12px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:56px;position:relative;padding:0 20px;border:1px solid var(--ln);border-radius:16px;background:rgba(10,10,14,.6);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:18px;letter-spacing:-.03em}
+.logo svg{width:28px;height:28px}
+nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav a{position:relative;padding:8px 14px;color:var(--mu);font-size:14px;white-space:nowrap;transition:color .2s}
+nav a:hover,nav a.on{color:var(--tx)}
+nav a.on::after{content:"";position:absolute;left:30%;right:30%;bottom:1px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--t),transparent);box-shadow:0 0 12px var(--t)}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:99px;background:#fff;color:#000;font:600 12px DM Mono,monospace;letter-spacing:.1em;text-transform:uppercase;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(176,32,255,.35)}
+.pill svg{width:15px;height:15px}
+.pill.g{background:transparent;color:var(--tx);border:1px solid var(--ln)}
+.nb{padding:10px 18px;font-size:11px}
+.tools{display:flex;align-items:center;gap:10px}.lang{display:flex;padding:3px;border:1px solid var(--ln);border-radius:99px;background:rgba(255,255,255,.04)}.lang button{border:0;background:transparent;color:var(--mu);font:400 11px DM Mono,monospace;letter-spacing:.1em;padding:6px 11px;border-radius:99px;cursor:pointer;transition:.2s}.lang button.on{background:#fff;color:#000}.burger{display:none;align-content:center;justify-items:center;gap:6px;width:42px;height:42px;padding:0;border:1px solid var(--ln);border-radius:12px;background:rgba(255,255,255,.04);cursor:pointer}.burger i{display:block;width:18px;height:1.5px;background:var(--tx);transition:transform .25s}.burger[aria-expanded=true] i:first-child{transform:translateY(3.75px) rotate(45deg)}.burger[aria-expanded=true] i:last-child{transform:translateY(-3.75px) rotate(-45deg)}@keyframes dd{from{opacity:0;transform:translateY(-6px)}}@media(max-width:1020px){.nb{display:none}}.page{display:none}
+.page.on{display:block}
+.hero{position:relative;min-height:calc(100vh - 90px);display:grid;grid-template-columns:1fr 1fr;align-items:center;margin-top:-68px}
+.rb{position:absolute;inset:0 30% 0 -4%;width:76%;height:100%;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent);mask-image:linear-gradient(90deg,#000 55%,transparent)}
+.rb .sw{transform-origin:10% 0;animation:sw 14s ease-in-out infinite alternate}
+@keyframes sw{to{transform:rotate(2.5deg) translateX(14px)}}
+.ghost{position:absolute;left:19%;top:50%;width:84px;height:84px;transform:translateY(-50%);opacity:.9}
+.ht{grid-column:2;position:relative;padding:120px 0 60px}
+.ht h1{font-size:clamp(34px,4.8vw,62px);margin:18px 0 32px}
+.ht h1 span{display:inline-block;opacity:0;animation:ch .7s ease forwards}
+@keyframes ch{from{opacity:0;filter:blur(6px);transform:translateY(6px)}to{opacity:1;filter:none;transform:none}}
+.ph{position:relative;padding:110px 0 30px}
+.ph::before{content:"";position:absolute;left:-10%;top:-40px;width:60%;height:380px;background:radial-gradient(ellipse,rgba(176,32,255,.2),transparent 65%),radial-gradient(ellipse at 20% 80%,rgba(38,201,192,.14),transparent 60%);pointer-events:none}
+.ph h1{position:relative;font-size:clamp(36px,6vw,72px);margin:14px 0 18px}
+.ph p{position:relative;color:var(--mu);max-width:560px;font-size:18px;margin:0}
+.sec{padding:56px 0}
+.sec>h2{font-size:clamp(26px,3.6vw,42px);margin:12px 0 36px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:1px solid var(--ln);background:var(--gl);border-radius:18px;padding:28px;transition:border-color .25s,background .25s}
+.card:hover{border-color:rgba(176,32,255,.6);background:rgba(176,32,255,.05)}
+.card h3{font-size:20px;font-weight:400;margin-bottom:10px}
+.card p{margin:0;color:var(--mu);font-size:14.5px}
+.card .mono{display:block;margin-bottom:22px}
+.shot{height:130px;margin:-28px -28px 22px;border-bottom:1px solid var(--ln);border-radius:18px 18px 0 0;background:radial-gradient(ellipse at 30% 120%,rgba(176,32,255,.4),transparent 60%),radial-gradient(ellipse at 80% 130%,rgba(38,201,192,.3),transparent 55%),#07070a;padding:16px;display:flex;flex-direction:column;gap:7px}
+.shot i{height:7px;border-radius:4px;background:rgba(255,255,255,.14)}
+.shot i:first-child{width:35%;background:rgba(255,255,255,.45)}.shot i:nth-child(2){width:80%}.shot i:nth-child(3){width:60%}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.tags span{font:400 11px DM Mono,monospace;padding:5px 11px;border:1px solid var(--ln);border-radius:99px;color:var(--mu)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ln)}
+.steps div{padding:26px 22px 0 0}
+.steps h3{font-size:19px;font-weight:400;margin:12px 0 8px}
+.steps p{margin:0;color:var(--mu);font-size:14px}
+.cta{position:relative;overflow:hidden;border:1px solid var(--ln);border-radius:26px;padding:64px 28px;text-align:center;background:radial-gradient(ellipse at 20% 120%,rgba(176,32,255,.35),transparent 55%),radial-gradient(ellipse at 85% 130%,rgba(38,201,192,.28),transparent 55%),var(--gl)}
+.cta h2{font-size:clamp(26px,4vw,44px);margin-bottom:28px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.two p{color:var(--mu)}
+.ci{display:flex;flex-direction:column;gap:4px;padding:20px 0;border-bottom:1px solid var(--ln)}
+.ci:first-child{border-top:1px solid var(--ln)}
+.ci a{font-size:20px}.ci a:hover{color:var(--t)}
+form{display:grid;gap:12px}
+input,textarea{width:100%;background:var(--gl);border:1px solid var(--ln);border-radius:14px;padding:15px;color:var(--tx);font:inherit;font-size:15px}
+input:focus,textarea:focus{border-color:var(--v)}
+textarea{min-height:140px;resize:vertical}
+form .pill{justify-self:start}#iletisim .two form{order:-1}#iletisim .sec{padding-top:24px}.er{color:#ff6b81;font-size:13px;margin:-4px 0 0 4px}.er:empty{display:none}input.bad,textarea.bad{border-color:#ff6b81}
+footer{border-top:1px solid var(--ln);margin-top:60px;padding:40px 0 32px;color:var(--mu);font-size:13px}
+.fr{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.fl{display:flex;flex-direction:column;gap:6px}.fl a:hover{color:var(--tx)}
+@media(max-width:860px){.hero{grid-template-columns:1fr;margin-top:-68px}.rb{inset:0;width:100%;opacity:.55;-webkit-mask-image:none;mask-image:none}.ghost{left:50%;top:26%;transform:translate(-50%,-50%)}.ht{grid-column:1;padding:340px 0 40px}.grid,.two{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.bar{padding:0 7px 0 18px}.burger{display:grid}.tools{gap:8px}nav{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);flex-direction:column;gap:2px;padding:10px;border:1px solid var(--ln);border-radius:20px;background:rgba(8,8,12,.94);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);overflow:visible}nav.open{display:flex;animation:dd .22s ease}nav a{padding:16px 18px;font-size:17px;border-radius:13px}nav a.on{background:rgba(255,255,255,.06)}nav a.on::after{left:auto;right:18px;top:50%;bottom:auto;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--t)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ht h1 span{opacity:1}}
+[hidden]{display:none!important}.pill.busy{opacity:.7;pointer-events:none}.pill.busy svg{animation:sp .9s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.md{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center}
+.mc{position:relative;width:100%;max-width:560px;max-height:92vh;overflow:auto;background:#0b0b10;border:1px solid var(--ln);border-radius:24px 24px 0 0;padding:26px 22px calc(26px + env(safe-area-inset-bottom,0px));display:grid;gap:14px;animation:dd .25s ease}
+@media(min-width:700px){.md{align-items:center}.mc{border-radius:24px}}
+.mc h3{font-size:24px;padding-right:44px}.hint{margin:0;color:var(--mu);font-size:14px}.ai{color:var(--t);margin:0}
+.mx{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:12px;border:1px solid var(--ln);background:transparent;color:var(--tx);font-size:22px;line-height:1;cursor:pointer}
+.mc textarea{min-height:180px}.apps{display:grid;gap:8px}
+.app{display:block;padding:15px 18px;border:1px solid var(--ln);border-radius:14px;background:var(--gl);font-size:15px;cursor:pointer;transition:.2s}
+.app:hover{border-color:var(--v);background:rgba(176,32,255,.08)}
+.warn{display:grid;gap:12px;padding:14px 16px;border:1px solid #ff6b81;border-radius:14px;background:rgba(255,107,129,.1);color:#ff8fa0;font-size:14px;line-height:1.5}.warn p{margin:0}.warn .pill{justify-self:start;padding:10px 16px;font-size:11px;border-color:#ff6b81;color:#ff8fa0}</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b020ff"/><stop offset="1" stop-color="#26c9c0"/></linearGradient>
+<symbol id="lg" viewBox="0 0 40 40"><path d="M20 2.5 35.5 11v18L20 37.5 4.5 29V11z" fill="none" stroke="url(#g)" stroke-width="1.4" opacity=".55"/><path d="M28 12.5H15l-3.5 3.5v2L15 21.5h10l3.5 3.5v2L25 30.5H12" fill="none" stroke="url(#g)" stroke-width="3.2" stroke-linecap="square"/><circle cx="28" cy="12.5" r="2" fill="#26c9c0"/><circle cx="12" cy="30.5" r="2" fill="#b020ff"/></symbol>
+<symbol id="sp" viewBox="0 0 24 24"><path d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10z" fill="currentColor"/></symbol>
+<filter id="bl" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="16"/></filter>
+<linearGradient id="pp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a1bff"/><stop offset=".6" stop-color="#d11fff"/><stop offset="1" stop-color="#5a1b9a" stop-opacity="0"/></linearGradient>
+<linearGradient id="tt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a8c92"/><stop offset="1" stop-color="#0a3340" stop-opacity="0"/></linearGradient>
+</defs></svg>
+
+<header><div class="wrap"><div class="bar">
+<a class="logo" href="#anasayfa" aria-label="Syraxen ana sayfa"><svg><use href="#lg"/></svg>syraxen</a>
+<nav aria-label="Ana menü"><a href="#anasayfa" data-n="anasayfa">Ana Sayfa</a><a href="#hizmetler" data-n="hizmetler">Hizmetler</a><a href="#projeler" data-n="projeler">Projeler</a><a href="#hakkimizda" data-n="hakkimizda">Hakkımızda</a><a href="#iletisim" data-n="iletisim">İletişim</a></nav>
+<div class="tools"><div class="lang" role="group" aria-label="Language"><button type="button" data-l="tr">TR</button><button type="button" data-l="en">EN</button></div><a class="pill nb" href="#iletisim">Bize ulaşın</a><button type="button" class="burger" id="bg" aria-label="Menü" aria-expanded="false"><i></i><i></i></button></div>
+</div></div></header>
+
+<main>
+<section class="page" id="anasayfa"><div class="wrap">
+<div class="hero">
+<svg class="rb" viewBox="0 0 800 800" preserveAspectRatio="xMinYMid slice" aria-hidden="true"><g class="sw">
+<g filter="url(#bl)"><path d="M70 -40C190 300 400 560 760 610" fill="none" stroke="url(#pp)" stroke-width="54"/><path d="M130 -40C230 360 330 640 390 840" fill="none" stroke="url(#tt)" stroke-width="46"/><path d="M0 120C260 300 520 520 820 540" fill="none" stroke="url(#pp)" stroke-width="26" opacity=".7"/><path d="M160 0C330 300 300 520 250 800" fill="none" stroke="#1d6f80" stroke-width="30" opacity=".6"/></g>
+<g fill="none" stroke-linecap="round"><path d="M60 -40C185 300 395 555 770 600" stroke="rgba(255,255,255,.4)" stroke-width="1"/><path d="M85 -40C205 310 410 575 790 640" stroke="#c36bff" stroke-width="1.3" opacity=".7"/><path d="M125 -40C225 360 325 640 385 840" stroke="rgba(255,255,255,.35)" stroke-width="1"/><path d="M150 -40C240 380 350 650 430 840" stroke="#3fe0d6" stroke-width="1.2" opacity=".6"/><path d="M20 0C130 250 180 450 160 800" stroke="rgba(255,255,255,.25)" stroke-width="1"/></g>
+</g></svg>
+<svg class="ghost" aria-hidden="true"><use href="#lg"/></svg>
+<div class="ht"><span class="mono">Neden Syraxen</span>
+<h1 id="h1">Fikrinizi çalışan bir yazılım ekosistemine dönüştürüyoruz</h1>
+<a class="pill" href="#iletisim"><svg><use href="#sp"/></svg>Proje başlatın</a></div>
+</div>
+
+<div class="sec"><span class="mono">Hizmetler</span><h2>Web, mobil ve özel yazılım; tek ekipte, tek çatı altında.</h2>
+<div class="grid">
+<a class="card" href="#hizmetler"><span class="mono">Web</span><h3>Web geliştirme</h3><p>Hızlı, güvenli ve aramada öne çıkan web siteleri ve uygulamaları.</p></a>
+<a class="card" href="#hizmetler"><span class="mono">Mobil</span><h3>Mobil uygulama</h3><p>iOS ve Android için akıcı, tek kod tabanlı uygulamalar.</p></a>
+<a class="card" href="#hizmetler"><span class="mono">Özel</span><h3>Özel yazılım</h3><p>CRM, ERP, panel ve otomasyon: işinize göre sıfırdan yazılan sistemler.</p></a>
+</div></div>
+
+<div class="sec"><span class="mono">Süreç</span><h2>Şeffaf, kısa döngülü, her adımda sizinle.</h2>
+<div class="steps">
+<div><span class="mono">Adım 1</span><h3>Keşif</h3><p>Hedefinizi dinler, kapsamı netleştiririz.</p></div>
+<div><span class="mono">Adım 2</span><h3>Tasarım</h3><p>Ekran akışlarını onayınıza sunarız.</p></div>
+<div><span class="mono">Adım 3</span><h3>Geliştirme</h3><p>Haftalık demolarla çalışan sürümü paylaşırız.</p></div>
+<div><span class="mono">Adım 4</span><h3>Yayın ve destek</h3><p>Canlıya alır, izler ve geliştirmeye devam ederiz.</p></div>
+</div></div>
+
+<div class="sec"><div class="cta"><h2>Sıradaki projenizi konuşalım.</h2><a class="pill" href="#iletisim"><svg><use href="#sp"/></svg>Bize ulaşın</a></div></div>
+</div></section>
+
+<section class="page" id="hizmetler"><div class="wrap">
+<div class="ph"><span class="mono">Hizmetler</span><h1>Ürününüzün her katmanında</h1><p>Birlikte iyi iş çıkaran uzmanlıklar; ihtiyacınız kadarını seçin.</p></div>
+<div class="sec"><div class="grid">
+<div class="card"><span class="mono">01 Web</span><h3>Web siteleri ve uygulamaları</h3><p>Kurumsal siteler, SaaS panelleri ve portallar. Performans, erişilebilirlik ve SEO baştan işin parçasıdır.</p></div>
+<div class="card"><span class="mono">02 Mobil</span><h3>Mobil uygulamalar</h3><p>React Native ve Flutter ile iOS ve Android’de aynı anda yayına çıkan uygulamalar.</p></div>
+<div class="card"><span class="mono">03 Özel</span><h3>Özel yazılım ve entegrasyon</h3><p>CRM, ERP, stok ve randevu sistemleri; mevcut araçlarınızla API ile konuşan çözümler.</p></div>
+<div class="card"><span class="mono">04 Satış</span><h3>E-ticaret</h3><p>Ödeme, kargo ve pazaryeri entegrasyonlu mağaza altyapıları.</p></div>
+<div class="card"><span class="mono">05 Tasarım</span><h3>UI/UX tasarım</h3><p>Kullanıcı araştırması, prototip ve markanıza uygun arayüz sistemleri.</p></div>
+<div class="card"><span class="mono">06 Altyapı</span><h3>Bulut ve DevOps</h3><p>Güvenli sunucu, otomatik dağıtım, izleme ve yedekleme.</p></div>
+<div class="card"><span class="mono">07 Yapay zekâ</span><h3>Yapay zekâ çözümleri</h3><p>Sohbet botları, belge analizi ve süreç otomasyonu.</p></div>
+<div class="card"><span class="mono">08 Destek</span><h3>Bakım ve destek</h3><p>Güncelleme, hata takibi ve aylık destek paketleri.</p></div>
+<div class="card"><span class="mono">09 Danışmanlık</span><h3>Teknik danışmanlık</h3><p>Mimari seçimi, kod incelemesi ve ekibiniz için yol haritası.</p></div>
+</div></div>
+<div class="sec"><div class="cta"><h2>Hangi hizmet size uygun?</h2><a class="pill" href="#iletisim"><svg><use href="#sp"/></svg>Birlikte belirleyelim</a></div></div>
+</div></section>
+
+<section class="page" id="projeler"><div class="wrap">
+<div class="ph"><span class="mono">Projeler</span><h1>Seçilmiş çalışmalar</h1><p>Farklı sektörlerden örnek projeler.</p></div>
+<div class="sec"><div class="grid">
+<div class="card"><div class="shot"><i></i><i></i><i></i></div><h3>Lojistik takip paneli</h3><p>Filo ve sevkiyatların canlı izlendiği yönetim paneli.</p><div class="tags"><span>Web</span><span>Dashboard</span><span>API</span></div></div>
+<div class="card"><div class="shot"><i></i><i></i><i></i></div><h3>Randevu ve kasa uygulaması</h3><p>Klinikler için mobil randevu, hatırlatma ve ödeme takibi.</p><div class="tags"><span>Mobil</span><span>iOS</span><span>Android</span></div></div>
+<div class="card"><div class="shot"><i></i><i></i><i></i></div><h3>Yerel ürün mağazası</h3><p>Üreticilerden tüm Türkiye’ye satış yapan e-ticaret platformu.</p><div class="tags"><span>E-ticaret</span><span>Ödeme</span></div></div>
+<div class="card"><div class="shot"><i></i><i></i><i></i></div><h3>Üretim stok sistemi</h3><p>Depo, sipariş ve barkod akışlarını birleştiren ERP modülü.</p><div class="tags"><span>Özel yazılım</span><span>ERP</span></div></div>
+<div class="card"><div class="shot"><i></i><i></i><i></i></div><h3>Destek asistanı</h3><p>Müşteri sorularını yanıtlayan yapay zekâ botu.</p><div class="tags"><span>Yapay zekâ</span></div></div>
+<div class="card"><div class="shot"><i></i><i></i><i></i></div><h3>Kurumsal tanıtım sitesi</h3><p>Çok dilli, hızlı ve yönetimi kolay marka sitesi.</p><div class="tags"><span>Web</span><span>CMS</span><span>SEO</span></div></div>
+</div></div>
+<div class="sec"><div class="cta"><h2>Sizin projeniz de burada olsun.</h2><a class="pill" href="#iletisim"><svg><use href="#sp"/></svg>Teklif isteyin</a></div></div>
+</div></section>
+
+<section class="page" id="hakkimizda"><div class="wrap">
+<div class="ph"><span class="mono">Hakkımızda</span><h1>Ordu’dan Türkiye’ye yazılım</h1><p>Küçük, odaklı ve sorumluluk alan bir ekibiz.</p></div>
+<div class="sec two">
+<div><h2 style="font-size:32px;margin-bottom:18px">Küçük ekip, net sorumluluk.</h2><p>Syraxen, yazılımın karmaşık değil anlaşılır olması gerektiğine inanan geliştirici ve tasarımcılar tarafından kuruldu. Projenizle ilgilenen kişiler baştan sona aynıdır.</p><p>Hedefimiz, teslim ettiğimiz yazılımın yıllarca sorunsuz çalışması ve işinizle birlikte büyümesidir.</p></div>
+<div style="display:grid;gap:14px">
+<div class="card"><h3>Şeffaflık</h3><p>Süre, kapsam ve maliyet baştan yazılı olur.</p></div>
+<div class="card"><h3>Kalite</h3><p>Kod incelemesi, test ve güvenlik kontrolü standarttır.</p></div>
+<div class="card"><h3>Sürdürülebilirlik</h3><p>Teslimden sonra da dokümantasyon ve destekle yanınızdayız.</p></div></div></div>
+<div class="sec"><span class="mono">Teknolojiler</span><div class="tags" style="margin-top:18px"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Python</span><span>Flutter</span><span>React Native</span><span>PostgreSQL</span><span>Docker</span><span>AWS</span></div></div>
+</div></section>
+
+<section class="page" id="iletisim"><div class="wrap">
+<div class="ph"><span class="mono">İletişim</span><h1>Projenizi anlatın</h1><p>En kısa sürede size dönüş yapalım.</p></div>
+<div class="sec two">
+<div>
+<div class="ci"><span class="mono">Telefon</span><a href="tel:+905510069220">+90 551 006 92 20</a></div>
+<div class="ci"><span class="mono">E-posta</span><a href="mailto:info@syraxen.tr">info@syraxen.tr</a></div>
+<div class="ci"><span class="mono">Adres</span><a href="https://www.google.com/maps/search/?api=1&query=Nizamettin+Mah+83+Altınordu+Ordu" target="_blank" rel="noopener">Nizamettin Mah, 83 – Altınordu / Ordu</a></div>
+</div>
+<form id="f" novalidate><input name="n" placeholder="Adınız" aria-label="Adınız" autocomplete="name"><small class="er" data-f="n" role="alert"></small><input name="c" placeholder="Telefon veya e-posta" aria-label="Telefon veya e-posta" autocomplete="tel" autocapitalize="none"><small class="er" data-f="c" role="alert"></small><textarea name="m" placeholder="Projenizden kısaca bahsedin" aria-label="Mesaj"></textarea><small class="er" data-f="m" role="alert"></small><button class="pill" type="submit"><svg><use href="#sp"/></svg>Mesaj gönder</button></form>
+</div></div></section>
+
+</main>
+
+<footer><div class="wrap fr">
+<div><a class="logo" href="#anasayfa"><svg><use href="#lg"/></svg>syraxen</a><p style="margin:12px 0 0">© 2026 Syraxen. Tüm hakları saklıdır.</p></div>
+<div class="fl"><a href="tel:+905510069220">+90 551 006 92 20</a><a href="mailto:info@syraxen.tr">info@syraxen.tr</a><span>Nizamettin Mah, 83 – Altınordu / Ordu</span></div>
+</div></footer>
+
+<div class="md" id="md" hidden><div class="mc" role="dialog" aria-modal="true" aria-labelledby="mt"><button type="button" class="mx" id="mxc" aria-label="Kapat">&times;</button>
+<div id="mv" style="display:grid;gap:14px"><h3 id="mt">Mesajınız hazır</h3><textarea id="mb" aria-label="Mesaj metni"></textarea><p class="er" id="er2" role="alert"></p>
+<div id="fb" hidden style="display:grid;gap:10px"><div class="apps"><a class="app" id="a0">Varsayılan e-posta uygulaması</a><a class="app" id="a1" target="_blank" rel="noopener">Gmail</a><a class="app" id="a2" target="_blank" rel="noopener">Outlook</a><a class="app" id="a3" target="_blank" rel="noopener">Yahoo Mail</a></div><div class="row" style="align-items:center"><button type="button" class="pill g" id="cpb">Mesajı kopyala</button><span class="mono" id="cp"></span></div></div></div>
+<div id="ok" hidden style="display:grid;gap:14px"><h3>Mesajınız iletildi</h3><p class="hint">En kısa sürede size dönüş yapacağız. Teşekkür ederiz.</p><button type="button" class="pill g" id="okc" style="justify-self:start">Kapat</button></div>
+</div></div>
+<script>
+(function(){
+var P=["anasayfa","hizmetler","projeler","hakkimizda","iletisim"];
+var h1=document.getElementById("h1");function rh(t){h1.setAttribute("aria-label",t);h1.textContent="";
+t.split(" ").forEach(function(w,wi,a){var s=document.createElement("span");s.setAttribute("aria-hidden","true");
+  w.split("").forEach(function(c,i){var x=document.createElement("span");x.textContent=c;x.style.animationDelay=(.25+(wi*4+i)*.025)+"s";s.appendChild(x)});
+  h1.appendChild(s);if(wi<a.length-1)h1.appendChild(document.createTextNode(" "))});}
+var L="tr";try{L=localStorage.getItem("sx")==="en"?"en":"tr"}catch(e){}
+var H={tr:"Fikrinizi çalışan bir yazılım ekosistemine dönüştürüyoruz",en:"We turn your idea into a working software ecosystem"};
+var D={"Ana Sayfa":"Home","Hizmetler":"Services","Projeler":"Projects","Hakkımızda":"About","İletişim":"Contact","Bize ulaşın":"Contact us","Ana menü":"Main menu","Menü":"Menu","Syraxen ana sayfa":"Syraxen home","Neden Syraxen":"Why Syraxen","Proje başlatın":"Start a project","Web, mobil ve özel yazılım; tek ekipte, tek çatı altında.":"Web, mobile and custom software, in one team under one roof.","Web geliştirme":"Web development","Mobil":"Mobile","Özel":"Custom","Hızlı, güvenli ve aramada öne çıkan web siteleri ve uygulamaları.":"Fast, secure websites and apps that stand out in search.","Mobil uygulama":"Mobile apps","iOS ve Android için akıcı, tek kod tabanlı uygulamalar.":"Smooth single-codebase apps for iOS and Android.","Özel yazılım":"Custom software","CRM, ERP, panel ve otomasyon: işinize göre sıfırdan yazılan sistemler.":"CRM, ERP, dashboards and automation: systems built from scratch for your business.","Süreç":"Process","Şeffaf, kısa döngülü, her adımda sizinle.":"Transparent, short cycles, with you at every step.","Adım 1":"Step 1","Adım 2":"Step 2","Adım 3":"Step 3","Adım 4":"Step 4","Keşif":"Discovery","Hedefinizi dinler, kapsamı netleştiririz.":"We listen to your goals and define the scope.","Tasarım":"Design","Ekran akışlarını onayınıza sunarız.":"We present screen flows for your approval.","Geliştirme":"Development","Haftalık demolarla çalışan sürümü paylaşırız.":"We share a working build with weekly demos.","Yayın ve destek":"Launch & support","Canlıya alır, izler ve geliştirmeye devam ederiz.":"We go live, monitor and keep improving.","Sıradaki projenizi konuşalım.":"Let’s talk about your next project.","Ürününüzün her katmanında":"Across every layer of your product","Birlikte iyi iş çıkaran uzmanlıklar; ihtiyacınız kadarını seçin.":"Skills that work well together; pick what you need.","01 Web":"01 Web","02 Mobil":"02 Mobile","03 Özel":"03 Custom","04 Satış":"04 Sales","05 Tasarım":"05 Design","06 Altyapı":"06 Infrastructure","07 Yapay zekâ":"07 AI","08 Destek":"08 Support","09 Danışmanlık":"09 Consulting","Web siteleri ve uygulamaları":"Websites & web apps","Kurumsal siteler, SaaS panelleri ve portallar. Performans, erişilebilirlik ve SEO baştan işin parçasıdır.":"Corporate sites, SaaS dashboards and portals. Performance, accessibility and SEO are built in from the start.","Mobil uygulamalar":"Mobile apps","React Native ve Flutter ile iOS ve Android’de aynı anda yayına çıkan uygulamalar.":"Apps launched on iOS and Android at the same time with React Native and Flutter.","Özel yazılım ve entegrasyon":"Custom software & integration","CRM, ERP, stok ve randevu sistemleri; mevcut araçlarınızla API ile konuşan çözümler.":"CRM, ERP, inventory and booking systems; solutions that talk to your existing tools via API.","E-ticaret":"E-commerce","Ödeme, kargo ve pazaryeri entegrasyonlu mağaza altyapıları.":"Store platforms with payment, shipping and marketplace integrations.","UI/UX tasarım":"UI/UX design","Kullanıcı araştırması, prototip ve markanıza uygun arayüz sistemleri.":"User research, prototypes and interface systems that fit your brand.","Bulut ve DevOps":"Cloud & DevOps","Güvenli sunucu, otomatik dağıtım, izleme ve yedekleme.":"Secure servers, automated deployment, monitoring and backups.","Yapay zekâ çözümleri":"AI solutions","Sohbet botları, belge analizi ve süreç otomasyonu.":"Chatbots, document analysis and process automation.","Bakım ve destek":"Maintenance & support","Güncelleme, hata takibi ve aylık destek paketleri.":"Updates, bug tracking and monthly support plans.","Teknik danışmanlık":"Technical consulting","Mimari seçimi, kod incelemesi ve ekibiniz için yol haritası.":"Architecture choices, code reviews and a roadmap for your team.","Hangi hizmet size uygun?":"Which service fits you?","Birlikte belirleyelim":"Let’s find out together","Seçilmiş çalışmalar":"Selected work","Farklı sektörlerden örnek projeler.":"Sample projects from different industries.","Lojistik takip paneli":"Logistics tracking dashboard","Filo ve sevkiyatların canlı izlendiği yönetim paneli.":"A management panel for live fleet and shipment tracking.","Randevu ve kasa uygulaması":"Booking & payments app","Klinikler için mobil randevu, hatırlatma ve ödeme takibi.":"Mobile booking, reminders and payment tracking for clinics.","Yerel ürün mağazası":"Local products store","Üreticilerden tüm Türkiye’ye satış yapan e-ticaret platformu.":"An e-commerce platform selling from producers across Turkey.","Ödeme":"Payments","Üretim stok sistemi":"Production inventory system","Depo, sipariş ve barkod akışlarını birleştiren ERP modülü.":"An ERP module that unifies warehouse, order and barcode flows.","Destek asistanı":"Support assistant","Müşteri sorularını yanıtlayan yapay zekâ botu.":"An AI bot that answers customer questions.","Yapay zekâ":"AI","Kurumsal tanıtım sitesi":"Corporate website","Çok dilli, hızlı ve yönetimi kolay marka sitesi.":"A multilingual, fast and easy-to-manage brand site.","Sizin projeniz de burada olsun.":"Your project could be here.","Teklif isteyin":"Request a quote","Ordu’dan Türkiye’ye yazılım":"Software from Ordu to all of Turkey","Küçük, odaklı ve sorumluluk alan bir ekibiz.":"We’re a small, focused team that takes responsibility.","Küçük ekip, net sorumluluk.":"Small team, clear responsibility.","Syraxen, yazılımın karmaşık değil anlaşılır olması gerektiğine inanan geliştirici ve tasarımcılar tarafından kuruldu. Projenizle ilgilenen kişiler baştan sona aynıdır.":"Syraxen was founded by developers and designers who believe software should be understandable, not complicated. The people on your project stay the same from start to finish.","Hedefimiz, teslim ettiğimiz yazılımın yıllarca sorunsuz çalışması ve işinizle birlikte büyümesidir.":"Our goal is for the software we deliver to run smoothly for years and grow with your business.","Şeffaflık":"Transparency","Süre, kapsam ve maliyet baştan yazılı olur.":"Timeline, scope and cost are put in writing upfront.","Kalite":"Quality","Kod incelemesi, test ve güvenlik kontrolü standarttır.":"Code review, testing and security checks are standard.","Sürdürülebilirlik":"Sustainability","Teslimden sonra da dokümantasyon ve destekle yanınızdayız.":"After delivery we stay with you through documentation and support.","Teknolojiler":"Technologies","Projenizi anlatın":"Tell us about your project","En kısa sürede size dönüş yapalım.":"We’ll get back to you as soon as possible.","Telefon":"Phone","E-posta":"Email","Adres":"Address","Adınız":"Your name","E-posta adresiniz":"Your email","Projenizden kısaca bahsedin":"Briefly describe your project","Mesaj gönder":"Send message","Mesajınız hazır":"Your message is ready","Hangi uygulamayla gönderilsin?":"Send with which app?","Varsayılan e-posta uygulaması":"Default mail app","Mesajı kopyala":"Copy message","Kopyalandı":"Copied","Kapat":"Close","Mesajınız iletildi":"Your message has been sent","En kısa sürede size dönüş yapacağız. Teşekkür ederiz.":"We will get back to you as soon as possible. Thank you.","Telefon veya e-posta":"Phone or email","Mesaj iletilemedi. Aşağıdaki uygulamalardan biriyle gönderebilirsiniz.":"The message could not be sent. You can send it with one of the apps below.","Mesaj metni":"Message text","Mesaj":"Message","© 2026 Syraxen. Tüm hakları saklıdır.":"© 2026 Syraxen. All rights reserved."};
+var M={tr:{c:"Geçerli bir telefon veya e-posta yazın.",n:"Lütfen adınızı yazın.",e:"E-posta adresi geçersiz. Örnek: ad@alanadi.com",m:"Lütfen mesajınızı yazın."},en:{c:"Enter a valid phone or email.",n:"Please enter your name.",e:"Invalid email address. Example: name@domain.com",m:"Please enter your message."}};
+function vf(f,d){var ok=true;["n","c","m"].forEach(function(k){var v=String(d.get(k)||"").trim(),bad=!v;if(k==="c")bad=!(/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[^\s@.]{2,}$/.test(v)||v.replace(/\D/g,"").length>=10);var el=f.elements[k],er=f.querySelector('[data-f="'+k+'"]');el.classList.toggle("bad",bad);el.setAttribute("aria-invalid",bad);er.textContent=bad?M[L][k]:"";if(bad&&ok){ok=false;el.focus()}});return ok}
+function tx(s){return L==="en"&&D[s]||s}
+function ap(){var w=document.createTreeWalker(document.body,4),n;
+while(n=w.nextNode()){var p=n.parentNode;if(p.tagName==="SCRIPT"||p.tagName==="STYLE"||p.closest("#h1"))continue;if(n._o===undefined)n._o=n.nodeValue;var k=n._o.trim();n.nodeValue=(k&&L==="en"&&D[k])?n._o.replace(k,D[k]):n._o}
+document.querySelectorAll("[placeholder],[aria-label]").forEach(function(e){if(e.id==="h1")return;["placeholder","aria-label"].forEach(function(a){if(e.hasAttribute(a)){if(!e["_"+a])e["_"+a]=e.getAttribute(a);e.setAttribute(a,tx(e["_"+a]))}})});
+document.documentElement.lang=L;document.title=L==="en"?"Syraxen | Software Agency":"Syraxen | Yazılım Ajansı";rh(H[L]);
+document.querySelectorAll(".lang button").forEach(function(b){var on=b.dataset.l===L;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)})}
+function go(){
+  var h=(location.hash||"").slice(1);try{h=decodeURIComponent(h)}catch(e){}if(P.indexOf(h)<0)h="anasayfa";
+  P.forEach(function(p){document.getElementById(p).classList.toggle("on",p===h)});
+  document.querySelectorAll("nav a").forEach(function(a){var on=a.dataset.n===h;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",go);go();ap();
+document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){L=b.dataset.l;try{localStorage.setItem("sx",L)}catch(e){}ap()})});
+var bg=document.getElementById("bg"),nv=document.querySelector("nav");
+function cl(){nv.classList.remove("open");bg.setAttribute("aria-expanded","false")}
+bg.addEventListener("click",function(){var o=nv.classList.toggle("open");bg.setAttribute("aria-expanded",o)});
+nv.addEventListener("click",cl);
+document.getElementById("f").addEventListener("input",function(e){var t=e.target;if(t.classList&&t.classList.contains("bad")){t.classList.remove("bad");var r=this.querySelector('[data-f="'+t.name+'"]');if(r)r.textContent=""}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")cl()});
+var FID="https://formspree.io/f/xljjdyzr",NL=String.fromCharCode(10),mdl=document.getElementById("md"),mb=document.getElementById("mb"),SUB="",TO="info@syraxen.tr";
+function ub(){var B=encodeURIComponent(mb.value),S=encodeURIComponent(SUB),q="to="+TO;
+document.getElementById("a0").href="mailto:"+TO+"?subject="+S+"&body="+B;
+document.getElementById("a1").href="https://mail.google.com/mail/?view=cm&fs=1&"+q+"&su="+S+"&body="+B;
+document.getElementById("a2").href="https://outlook.live.com/mail/0/deeplink/compose?"+q+"&subject="+S+"&body="+B;
+document.getElementById("a3").href="https://compose.mail.yahoo.com/?"+q+"&subject="+S+"&body="+B}
+function sm(ok,t){document.getElementById("mv").hidden=ok;document.getElementById("ok").hidden=!ok;document.getElementById("fb").hidden=ok;
+document.getElementById("er2").textContent=ok?"":tx("Mesaj iletilemedi. Aşağıdaki uygulamalardan biriyle gönderebilirsiniz.");
+if(!ok){mb.value=t;ub()}document.getElementById("cp").textContent="";mdl.hidden=false;document.getElementById("mxc").focus()}
+function cm(){mdl.hidden=true}
+mb.addEventListener("input",ub);
+document.getElementById("mxc").addEventListener("click",cm);
+mdl.addEventListener("click",function(x){if(x.target===mdl)cm()});
+document.addEventListener("keydown",function(x){if(x.key==="Escape")cm()});
+document.getElementById("cpb").addEventListener("click",function(){var c=document.getElementById("cp");function ok(){c.textContent=tx("Kopyalandı");setTimeout(function(){c.textContent=""},2000)}
+try{navigator.clipboard.writeText(mb.value).then(ok,function(){mb.select();try{document.execCommand("copy")}catch(y){}ok()})}catch(z){mb.select();try{document.execCommand("copy")}catch(y){}ok()}});
+document.getElementById("okc").addEventListener("click",cm);
+document.getElementById("f").addEventListener("submit",function(ev){
+ev.preventDefault();var f=ev.target,d=new FormData(f);if(!vf(f,d))return;
+var nm=String(d.get("n")).trim(),ct=String(d.get("c")).trim(),raw=String(d.get("m")).trim(),btn=f.querySelector("button[type=submit]"),en=L==="en";
+SUB=en?"Message from Syraxen website":"Syraxen web sitesinden mesaj";
+var pl={name:nm,message:raw,_subject:SUB};if(/@/.test(ct))pl.email=ct;else pl.phone=ct;
+btn.classList.add("busy");btn.disabled=true;
+var ac=new AbortController(),tm=setTimeout(function(){ac.abort()},15000);
+fetch(FID,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(pl),signal:ac.signal}).then(function(r){clearTimeout(tm);if(!r.ok)throw 0;f.reset();sm(true)}).catch(function(){clearTimeout(tm);sm(false,raw+NL+NL+(en?"Best regards,":"Saygılarımla,")+NL+nm+NL+ct)}).then(function(){btn.classList.remove("busy");btn.disabled=false})});
+})();
+</script>
+</body>
+</html>
